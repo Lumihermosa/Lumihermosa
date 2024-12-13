@@ -227,100 +227,37 @@
         <p>Hoy, más que nunca, quiero expresarte lo que significas para mí. Desde que llegaste a mi vida, todo tiene más color, más luz, más significado. Eres la razón por la que sonrío cada mañana y el motor que me impulsa a seguir. Mi amor por ti no tiene fin y, en este día tan especial, me gustaría que supieras lo afortunado que me siento al tenerte como mi compañera, amiga y amor eterno. Mi corazón late por ti y siempre lo hará. Te deseo un cumpleaños lleno de sonrisas, abrazos, y mucho amor, porque tú eres el mayor regalo de mi vida. 💜🌷🎂</p>
     </section>
 
-<section class="galeria">
-    <h2>Galería de Recuerdos Juntos 📸</h2>
-    <input type="file" id="file-input" multiple accept="image/*">
-    <div id="photo-container"></div>
-</section>
-
-<script>
-    const container = document.getElementById('photo-container');
-
-    // Solicitar clave de administrador al cargar la página
-    const isAdmin = prompt("Ingrese la clave de administrador") === "miClaveSecreta";
-
-    // Función para guardar imágenes en localStorage
-    function saveToLocalStorage(images) {
-        localStorage.setItem('uploadedImages', JSON.stringify(images));
-    }
-
-    // Función para cargar imágenes desde localStorage
-    function loadFromLocalStorage() {
-        const images = JSON.parse(localStorage.getItem('uploadedImages')) || [];
-        images.forEach((image, index) => {
-            createImageElement(image, index);
-        });
-    }
-
-    // Crear elemento de imagen con botón de eliminación (si es admin)
-    function createImageElement(imageSrc, index) {
-        const imageWrapper = document.createElement('div');
-        imageWrapper.style.position = 'relative';
-        imageWrapper.style.display = 'inline-block';
-        imageWrapper.style.margin = '10px';
-
-        const img = document.createElement('img');
-        img.src = imageSrc;
-        img.style.width = '300px';
-        img.style.height = 'auto';
-        img.style.borderRadius = '8px';
-        img.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-
-        imageWrapper.appendChild(img);
-
-        // Agregar botón de eliminación si es admin
-        if (isAdmin) {
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = '✖';
-            deleteButton.style.position = 'absolute';
-            deleteButton.style.top = '5px';
-            deleteButton.style.right = '5px';
-            deleteButton.style.backgroundColor = '#ff4444';
-            deleteButton.style.color = 'white';
-            deleteButton.style.border = 'none';
-            deleteButton.style.borderRadius = '50%';
-            deleteButton.style.width = '25px';
-            deleteButton.style.height = '25px';
-            deleteButton.style.cursor = 'pointer';
-
-            // Manejar la eliminación de imágenes
-            deleteButton.addEventListener('click', function () {
-                const images = JSON.parse(localStorage.getItem('uploadedImages')) || [];
-                images.splice(index, 1); // Eliminar la imagen del array
-                saveToLocalStorage(images); // Guardar cambios en localStorage
-                container.innerHTML = ''; // Limpiar el contenedor
-                loadFromLocalStorage(); // Recargar las imágenes actualizadas
-            });
-
-            imageWrapper.appendChild(deleteButton);
+   <title>Galería de Fotos</title>
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        container.appendChild(imageWrapper);
-    }
+.galeria img {
+    width: 1200px; /* Ajusta el ancho según tu preferencia */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+    </style>
+</head>
+<body>
+    <section class="galeria">
+        <div><h2>Galería de Recuerdos Juntos</h2></div>
+        <div id="photo-container">
+<img src="eee.jpg">
+<img src="o.jpg">
+<img src="ert.jpg">
+<img src="3.jpg">
+<img src="4.jpg">
+        </div>
+    </section>
 
-    // Manejar la carga de nuevas imágenes
-    document.getElementById('file-input').addEventListener('change', function (event) {
-        const images = JSON.parse(localStorage.getItem('uploadedImages')) || [];
-
-        Array.from(event.target.files).forEach(file => {
-            if (file.type.startsWith('image/')) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    images.push(e.target.result); // Agregar imagen al array
-                    saveToLocalStorage(images); // Guardar en localStorage
-                    container.innerHTML = ''; // Limpiar el contenedor
-                    loadFromLocalStorage(); // Recargar con las nuevas imágenes
-                };
-
-                reader.readAsDataURL(file);
-            }
-        });
-    });
-
-    // Cargar imágenes al inicio
-    loadFromLocalStorage();
-</script>
+    <script>
+        // Eliminamos el código JavaScript relacionado con la carga de imágenes
+    </script>
+</body>
+</html>
 
 
 <section class="canciones">
